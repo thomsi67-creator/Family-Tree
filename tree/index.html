@@ -12,20 +12,59 @@
 <div id="site-header"></div>
 
 <main>
-    <section>
+    <section class="private-hero">
+        <p class="pill">Private</p>
+        <h2>Family Tree (Private)</h2>
         <p>
-            The interactive family tree will live here.
+            This area holds the family tree and related records for verified family members.
+            Access is limited to protect information about living people.
         </p>
+    </section>
 
+    <section class="card private-notice">
+        <!-- Visual gating only. It does NOT secure data. Real protection will come later (Cloudflare Access / auth / server-side). -->
+        <h2>Request access required</h2>
         <p>
-            This section will eventually host the genealogy system
-            (initially TNG, later a custom family tree application).
+            This section contains information about living people and is only available to verified family members.
         </p>
+        <div class="form-actions">
+            <a class="nav-cta" href="/request-access/">Request Access</a>
+            <a class="button-secondary" href="mailto:myfamilytree12@outlook.com?subject=Family%20Archive%20Tree%20Access">Email instead</a>
+        </div>
+        <p class="form-note">Visual gating only; real protection is coming.</p>
+    </section>
 
-        <p>
-            If you're family and would like access to private records, please use:
-            <a href="/request-access/">Request Access</a>
-        </p>
+    <section class="card">
+        <h2>What you'll see once approved</h2>
+        <div class="preview-grid">
+            <div>
+                <h3>Explore</h3>
+                <ul>
+                    <li>Search people</li>
+                    <li>View relationships</li>
+                    <li>Timeline of events</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Record</h3>
+                <ul>
+                    <li>Photos and documents (where available)</li>
+                    <li>Notes and sources</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="card subtle">
+        <h2>Status</h2>
+        <p><span class="pill">Coming soon</span> Tree system: Coming soon (TNG / future app integration)</p>
+        <p>In the meantime, browse:</p>
+        <ul>
+            <li><a href="/family-lines/">Family Lines</a></li>
+            <li><a href="/timeline/">Timeline</a></li>
+            <li><a href="/stories/">Stories</a></li>
+            <li><a href="/gallery/">Gallery</a></li>
+        </ul>
     </section>
 </main>
 
