@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <title>Request Access</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Request access to the private family archive.">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <script defer src="/assets/js/includes.js"></script>
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<main>
+    <section>
+        <h2>Private family site</h2>
+        <p>
+            This archive is intended for family members. To protect living people's privacy,
+            some content may be hidden unless you've been granted access.
+        </p>
+        <p>
+            Fill in the form below and we'll get back to you. Please include enough detail so we can
+            place you on the tree (for example, who you're related to).
+        </p>
+    </section>
+
+    <section class="card">
+        <h2>Access request form</h2>
+
+        <!--
+            Sends an email using the visitor's default email app.
+            Recipient: myfamilytree12@outlook.com
+        -->
+        <form id="accessForm" class="form" action="mailto:myfamilytree12@outlook.com" method="get">
+            <!-- We'll fill subject/body with JS so emails are tidy and consistent -->
+            <input type="hidden" id="subject" name="subject" value="">
+            <input type="hidden" id="bodyHidden" name="body" value="">
+
+            <div class="form-row">
+                <label for="name">Your name</label>
+                <input id="name" name="name" type="text" autocomplete="name" required>
+            </div>
+
+            <div class="form-row">
+                <label for="email">Your email</label>
+                <input id="email" name="email" type="email" autocomplete="email" required>
+            </div>
+
+            <div class="form-row">
+                <label for="relation">How are you related?</label>
+                <input id="relation" name="relation" type="text" placeholder="e.g., Grandchild of., Cousin of." required>
+            </div>
+
+            <div class="form-row">
+                <label for="message">Anything else we should know?</label>
+                <textarea id="message" rows="6" placeholder="Optional details, surnames, locations, etc."></textarea>
+            </div>
+
+            <div class="form-row form-check">
+                <input id="privacy" type="checkbox" required>
+                <label for="privacy">I understand this site is private and I won't share living people's details publicly.</label>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit">Send request</button>
+                <button type="button" class="button-secondary" id="copyBtn">Copy request text</button>
+            </div>
+
+            <p class="form-note">
+                If the "Send request" button doesn't open your email app, use "Copy request text" and email it manually to
+                <strong>myfamilytree12@outlook.com</strong>.
+            </p>
+        </form>
+    </section>
+
+    <section class="card subtle">
+        <h2>What happens next?</h2>
+        <ul>
+            <li>We'll confirm who you are (usually by family connection).</li>
+            <li>We'll enable access and send you the link/login details (depending on how we set it up).</li>
+            <li>You can then view private pages and help improve the archive over time.</li>
+        </ul>
+    </section>
+</main>
+
+<div id="site-footer"></div>
+
+<script>
+(function () {
+    const form = document.getElementById("accessForm");
+
+    const subjectEl = document.getElementById("subject");
+    const bodyHiddenEl = document.getElementById("bodyHidden");
+
+    const copyBtn = document.getElementById("copyBtn");
+    const nameEl = document.getElementById("name");
+    const emailEl = document.getElementById("email");
+    const relationEl = document.getElementById("relation");
+    const messageEl = document.getElementById("message");
+
+    function makeRef() {
+        // Short, friendly reference code (not personal data)
+        const now = new Date();
+        const y = now.getFullYear().toString().slice(-2);
+        const m = String(now.getMonth() + 1).padStart(2, "0");
+        const d = String(now.getDate()).padStart(2, "0");
+        const rand = Math.random().toString(16).slice(2, 6).toUpperCase();
+        return `FA-${y}${m}${d}-${rand}`;
+    }
+
+    function buildSubject(ref) {
+        return `Family Archive Access Request (${ref})`;
+    }
+
+    function buildBody(ref) {
+        const lines = [
+            "Family Archive - Access Request",
+            `Reference: ${ref}`,
+            "",
+            `Name: ${nameEl.value || ""}`,
+            `Email: ${emailEl.value || ""}`,
+            `Related as: ${relationEl.value || ""}`,
+            "",
+            "Notes:",
+            (messageEl.value || "")
+        ];
+        return lines.join("\n");
+    }
+
+    function fillHiddenFields() {
+        const ref = makeRef();
+        const subject = buildSubject(ref);
+        const body = buildBody(ref);
+
+        subjectEl.value = subject;
+        bodyHiddenEl.value = body;
+
+        return { ref, subject, body };
+    }
+
+    form.addEventListener("submit", () => {
+        // Ensure mailto has subject + body before the browser triggers it
+        fillHiddenFields();
+    });
+
+    copyBtn.addEventListener("click", async () => {
+        const { body } = fillHiddenFields();
+        try {
+            await navigator.clipboard.writeText(body);
+            copyBtn.textContent = "Copied!";
+            setTimeout(() => copyBtn.textContent = "Copy request text", 1500);
+        } catch {
+            alert("Could not copy automatically. Please select and copy this text manually:\n\n" + body);
+        }
+    });
+})();
+</script>
+
+</body>
+</html>

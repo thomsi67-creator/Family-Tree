@@ -1,0 +1,246 @@
+/* =========================================================
+   Family Archive - Base Styles
+   Warm, calm, archival aesthetic
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html { font-size: 16px; }
+
+body {
+    font-family: "Georgia", "Times New Roman", serif;
+    background-color: #f6f1e7; /* parchment */
+    color: #2b2b2b;
+    line-height: 1.6;
+}
+
+/* Layout */
+header,
+main,
+footer {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+header {
+    border-bottom: 1px solid #d6cdbb;
+    margin-bottom: 2rem;
+}
+
+footer {
+    border-top: 1px solid #d6cdbb;
+    margin-top: 3rem;
+    font-size: 0.95rem;
+    color: #6b665a;
+}
+
+/* Typography */
+h1, h2, h3 {
+    font-family: "Georgia", serif;
+    color: #3a3a2f;
+    margin-bottom: 0.75rem;
+}
+
+h1 {
+    font-size: 2.1rem;
+    letter-spacing: 0.03em;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+}
+
+p {
+    margin-bottom: 1rem;
+    max-width: 70ch;
+}
+
+/* Navigation */
+nav {
+    margin-top: 1rem;
+}
+
+nav a {
+    margin-right: 1rem;
+    text-decoration: none;
+    color: #5a4a2f; /* warm brown */
+    font-weight: normal;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.nav-cta {
+    padding: 0.25rem 0.6rem;
+    border: 1px solid #d6cdbb;
+    border-radius: 6px;
+    background: #fbf7ef;
+}
+
+.nav-cta:hover {
+    text-decoration: none;
+    background: #f3ead7;
+}
+
+.lock-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0.35rem;
+    padding: 0.08rem 0.35rem;
+    font-size: 0.7em;
+    line-height: 1;
+    border-radius: 999px;
+    border: 1px solid #d6cdbb;
+    background: #f8f2e8;
+    color: #6b4f2c;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.08);
+    vertical-align: text-top;
+}
+
+/* Lists */
+ul {
+    margin-left: 1.2rem;
+    margin-top: 1rem;
+}
+
+li { margin-bottom: 0.5rem; }
+
+/* Links */
+a { color: #6b4f2c; }
+a:hover { color: #3f2e1a; }
+
+/* Sections */
+section { margin-bottom: 2.5rem; }
+
+.last-updated {
+    margin-top: 2rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #e2d8c6;
+    font-size: 0.95rem;
+    color: #6b665a;
+}
+
+footer p { text-align: centre; }
+
+/* Cards */
+.card {
+    background: #fbf7ef;
+    border: 1px solid #d6cdbb;
+    border-radius: 10px;
+    padding: 1.25rem;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03);
+}
+
+.card.subtle {
+    background: transparent;
+}
+
+/* Forms */
+.form { margin-top: 0.5rem; }
+
+.form-row {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+label {
+    font-size: 0.98rem;
+    color: #3a3a2f;
+}
+
+input, textarea {
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 0.65rem 0.75rem;
+    border: 1px solid #d6cdbb;
+    border-radius: 8px;
+    background: #fffdf8;
+    color: #2b2b2b;
+}
+
+input:focus, textarea:focus {
+    outline: 2px solid rgba(107, 79, 44, 0.25);
+    outline-offset: 2px;
+}
+
+.form-check {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0.6rem;
+}
+
+.form-check input {
+    margin-top: 0.25rem;
+}
+
+.form-actions {
+    margin-top: 1.25rem;
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+button {
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 0.6rem 0.9rem;
+    border-radius: 8px;
+    border: 1px solid #5a4a2f;
+    background: #5a4a2f;
+    color: #fbf7ef;
+    cursor: pointer;
+}
+
+button:hover {
+    filter: brightness(0.95);
+}
+
+.button-secondary {
+    background: transparent;
+    color: #5a4a2f;
+    border: 1px solid #d6cdbb;
+}
+
+.button-secondary:hover {
+    background: #f3ead7;
+}
+
+.form-note {
+    margin-top: 0.9rem;
+    font-size: 0.95rem;
+    color: #6b665a;
+    max-width: 80ch;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    header, main, footer { padding: 1rem; }
+    nav a { display: inline-block; margin-bottom: 0.5rem; }
+}
+/* Notice / privacy banner */
+.notice {
+    background: #fbf7ef;
+    border: 1px solid #d6cdbb;
+    border-left: 6px solid #5a4a2f;
+    border-radius: 10px;
+    padding: 1.1rem 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.notice-title {
+    margin-top: 0;
+}
+
+.notice-actions {
+    margin-top: 0.75rem;
+}
